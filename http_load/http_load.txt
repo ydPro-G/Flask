@@ -1,0 +1,71 @@
+http://www.bjhee.com/http-load.html
+
+
+轻量级压力测试工具http_load
+2019年7月27日 | 测试 工具
+文章目录
+安装http_load
+命令格式
+使用示例
+无意中发现了这个工具”http_load”，又轻巧又简便，整个安装包就10几K。它可以快速用来对网站或者Web API进行压力测试。而且功能还挺强大的，特别是在架构验证过程中，测试某个平台的并发和响应时间相当的管用。
+
+安装http_load
+我们直接从官网上下载压缩包安装。
+
+$ wget http://acme.com/software/http_load/http_load-09Mar2016.tar.gz
+$ tar xfz http_load-09Mar2016.tar.gz
+解压完用”make”安装。
+
+$ cd http_load-09Mar2016/
+$ make && sudo make install
+因为包小，所以瞬间安装完。直接打http_load命令验证下是否安装成功，你应该可以看到下面的信息：
+
+usage:  http_load [-checksum] [-throttle] [-proxy host:port] [-verbose] [-timeout secs] [-sip sip_file]
+            -parallel N | -rate N [-jitter]
+            -fetches N | -seconds N
+            url_file
+One start specifier, either -parallel or -rate, is required.
+One end specifier, either -fetches or -seconds, is required.
+接下来就让我们用一下这个工具。
+
+命令格式
+使用”http_load”的主要方式就是用命令http_load <参数> <url列表文件>。其中”url列表文件”就是一个文本文件，每行放一条你要测试的URL地址（默认只支持HTTP），”http_load”在运行时会从中随机抽取地址访问。当然你也可以只放一条，那就是针对特定地址做压测。
+
+“http_load”的参数主要有：
+
+-parallel 简写 -p: 同一时间发起的并发连接数
+-rate 简写 -r: 每秒开启的并发连接数
+-parallel或-rate必须且只能有一个
+
+-fetches 简写 -f ：总计的访问次数
+-seconds 简写 -s ：总计的访问时间
+-fetches或-seconds必须且只能有一个
+
+-proxy host:port: 指定需经过的代理地址和端口
+timeout secs: 连接闲置后多久超时，默认60秒
+-verbose: 控制台输出详细信息
+注意网上有些文章说-p是并发进程数，千万别被带坑里了。”http_load”就一个进程，它只是模拟并发连接，不是真起了一大堆客户端进程。每个连接的调用都是非阻塞式的，因此确保了并发量。
+
+使用示例
+我拿本地的Hugo Server来测试，访问地址是http://localhost:1313/。首先创建”urls.txt”文件，将Hugo Server的访问地址写在第一行。接下来开始测试：
+
+起50个并发，运行10秒
+
+$ http_load -p 50 -s 10 urls.txt
+得到结果
+
+60119 fetches, 50 max parallel, 1.8471e+09 bytes, in 10.0032 seconds
+30724 mean bytes/connection
+6009.95 fetches/sec, 1.8465e+08 bytes/sec
+msecs/connect: 0.336331 mean, 12.37 max, 0.021 min
+msecs/first-response: 4.59145 mean, 26.663 max, 0.089 min
+HTTP response codes:
+  code 200 -- 60119
+简单说明下每行的含义： 1. 共访问了60119次，50个最大并发，获取了18亿字节的数据，用时10.0032秒 1. 每次访问平均获取30724字节 1. 每秒6009.95次访问，每秒1.8亿字节数据 1. 平均每次访问0.336331毫秒，最大12.37毫秒，最小0.021毫秒 1. 首次响应平均4.59145毫秒，最大26.663毫秒，最小0.089毫秒 1. HTTP响应代码，60119次200，说明所有访问都成功了
+
+到底是本地访问，性能还不错。换一个测试方式试试：
+
+每秒访问1000次(http_load上限每秒1000)，总共访问10000次
+
+http_load -r 1000 -f 10000 urls.txt
+这个测试方式可以用来压每秒最大并发数。
