@@ -1,0 +1,243 @@
+.descript_area {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    flex-grow: 1;
+    margin-top: 80px;
+}
+.descript_area img {
+    display: flex;
+    max-width: 100%;
+}
+.descript_area p {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    align-items: flex-end;
+    margin-top: 50px;
+}
+.txt {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.wrap_a{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 15px 0;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.list .item{
+    width: 19%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    /* -webkit-box-shadow: -1px 0px 20px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 20px 2px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 20px 2px rgba(0,0,0,0.75); */
+    border: 1px solid #888;
+}
+.list .item .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.list .item .img img{
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+}
+.box {
+    margin: 0;
+    padding: 0;
+    background-color: 	#F8F8F8;
+}
+.txt_a {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.txt_b {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: lighter;
+    align-items: flex-start;
+}
+.txt_b p{
+    display: inline-flex;
+    color: gold;
+}
+.functional_area {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.functional_area .image_area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.functional_area .image_area img {
+    max-width: 100%;
+}
+.breakfast_area {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background-color: 	#F8F8F8;
+}
+.breakfast_area .marketing_system {
+    display: flex;
+    justify-content: center; /*主轴对齐改为居中就可以不用左右两栏布局了*/
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.marketing_item {
+    width: 35%;
+    margin: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+}
+.marketing_item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.marketing_item p {
+    background-color: white;
+}
+
+.merp {
+    margin: 0 auto;
+    padding: 0;
+}
+.merp_list {
+    display: flex; /*弹性布局*/
+    justify-content: center; /*平行轴对齐方式为两端对齐，项目之间的距离相等*/
+    align-items: center; /*垂直轴对齐方式为居中对齐*/
+    flex-wrap: wrap; /*一行放不下时换行*/
+}
+.merp_list .merp_item {
+    width: 30%;
+    margin: 10px 2.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column; /*项目排列方向为竖直排列，让图片和文字放下*/
+    border: 1px solid #888;
+}
+.merp_list .merp_item .img {
+    max-width: 100%;
+    width: 100%;
+}
+.merp_item_a {
+    display: flex;
+    align-items: center; /*垂直居中*/
+    justify-content:start; /*平行靠左*/
+    width: 100%;
+}
+.merp_list .merp_item .merp_item_a img {
+    height: 40px;
+    max-width: 100%;
+}
+
+.hardware_box {
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8;
+}
+.motorola_cdma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 300px;
+    padding: 0 20%; /*使用box的内边距可以让两个元素靠近*/
+}
+
+.motorola_cdma .hardware_txt {
+    display: flex;
+    width: 40%;
+    height: 100%;
+    padding: 0 5%;
+    flex-direction: column;
+}
+.txt_p {
+    display: inline-block;
+    margin-top: 30px;
+
+}
+.size {
+    font-size: 22px;
+    font-weight: bold;
+}
+.size_b {
+    font-size: 18px;
+
+}
+.hardware_txt img {
+    max-width: 100%;
+}
+.product_introduction {
+    margin: 30px auto;
+    padding: 0;
+}
+.product_pictures{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: auto;
+    padding: 0 19%;
+}
+.product_pictures img {
+    width: 100%;
+    max-width: 100%;
+
+}
+
+.data_analysis {
+    margin-top: 50px;
+    padding: 0;
+}
+.data_screen {
+    margin: 0;
+    padding: 0;
+    background-color: #F8F8F8;
+}
+.product_pictures img {
+    max-width: 100%;
+}
+.bottom {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.bottom img {
+    max-width: 100%;
+}
